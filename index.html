@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AD Enterprises | Indoor & Outdoor Advertising | Patna, Bihar</title>
+    <meta name="description" content="AD Enterprises — Bihar's trusted indoor & outdoor advertising company. Hoardings, flex boards, glow sign boards, showroom branding and more. Offices in Patna & Ranchi.">
+
+    <!-- Google Fonts: Syne + Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══════════ LOADER ═══════════ -->
+<div id="loader" aria-hidden="true">
+    <div class="loader-inner">
+        <div class="loader-logo"><span>AD</span></div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+        <p>Crafting Your Vision…</p>
+    </div>
+</div>
+
+<!-- ═══════════ CURSOR ═══════════ -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+    <div class="nav-inner container">
+        <a href="#home" class="nav-logo">
+            <span class="logo-ad">AD</span><span class="logo-ent"> Enterprises</span>
+        </a>
+
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home"        class="nav-item active" data-section="home">Home</a></li>
+            <li><a href="#about"       class="nav-item" data-section="about">About</a></li>
+            <li><a href="#services"    class="nav-item" data-section="services">Services</a></li>
+            <li><a href="#portfolio"   class="nav-item" data-section="portfolio">Portfolio</a></li>
+            <li><a href="#showcase"    class="nav-item" data-section="showcase">Showcase</a></li>
+            <li><a href="#contact"     class="nav-item" data-section="contact">Contact</a></li>
+        </ul>
+
+        <a href="#contact" class="nav-cta btn-neon">Get Quote</a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ═══════════ MOBILE MENU ═══════════ -->
+<div class="mobile-drawer" id="mobileDrawer">
+    <button class="drawer-close" id="drawerClose"><i class="fa fa-times"></i></button>
+    <div class="drawer-brand"><span class="logo-ad">AD</span><span class="logo-ent"> Enterprises</span></div>
+    <nav class="drawer-nav">
+        <a href="#home"      class="drawer-link">Home</a>
+        <a href="#about"     class="drawer-link">About</a>
+        <a href="#services"  class="drawer-link">Services</a>
+        <a href="#portfolio" class="drawer-link">Portfolio</a>
+        <a href="#showcase"  class="drawer-link">Showcase</a>
+        <a href="#contact"   class="drawer-link">Contact</a>
+    </nav>
+    <a href="https://wa.me/919876543210" target="_blank" class="drawer-wa">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+    </a>
+</div>
+<div class="drawer-overlay" id="drawerOverlay"></div>
+
+<!-- ═══════════════════════════════
+     HERO
+════════════════════════════════ -->
+<section id="home" class="hero">
+    <!-- Parallax BG layers -->
+    <div class="hero-bg-layer hero-layer-1"></div>
+    <div class="hero-bg-layer hero-layer-2"></div>
+    <!-- Animated grain texture -->
+    <div class="hero-grain"></div>
+    <!-- Radial glow orbs -->
+    <div class="hero-orb orb-green"></div>
+    <div class="hero-orb orb-blue"></div>
+
+    <div class="container hero-content">
+        <div class="hero-badge reveal" data-reveal="fade">
+            <span class="badge-dot"></span>
+            <span>Established 2014 · Patna, Bihar</span>
+        </div>
+
+        <h1 class="hero-title reveal" data-reveal="up">
+            <span class="line">Indoor &amp; Outdoor</span>
+            <span class="line gradient-text">Advertising</span>
+            <span class="line">Solutions</span>
+        </h1>
+
+        <p class="hero-sub reveal" data-reveal="up" data-delay="100">
+            We build high-impact advertising solutions — hoardings, branding, and signage
+            that help businesses stand out and grow across Bihar &amp; Jharkhand.
+        </p>
+
+        <div class="hero-stats reveal" data-reveal="up" data-delay="200">
+            <div class="hstat"><span class="counter" data-target="500">0</span><span>+</span><small>Projects Completed</small></div>
+            <div class="hstat-div"></div>
+            <div class="hstat"><span class="counter" data-target="10">0</span><span>+</span><small>Years Experience</small></div>
+            <div class="hstat-div"></div>
+            <div class="hstat"><span class="counter" data-target="120">0</span><span>+</span><small>Happy Clients</small></div>
+        </div>
+
+        <div class="hero-actions reveal" data-reveal="up" data-delay="300">
+            <a href="#contact" class="btn btn-primary">
+                <span>Get Free Quote</span><i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="#services" class="btn btn-ghost">
+                <i class="fas fa-play-circle"></i><span>Our Services</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scrolldown cue -->
+    <a href="#about" class="hero-scroll-cue" aria-label="Scroll down">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+        <span>Scroll</span>
+    </a>
+
+    <!-- Marquee ribbon -->
+    <div class="hero-ribbon">
+        <div class="ribbon-track">
+            <span>Hoardings</span><span class="ribbon-sep">✦</span>
+            <span>Flex Boards</span><span class="ribbon-sep">✦</span>
+            <span>Glow Signs</span><span class="ribbon-sep">✦</span>
+            <span>Wall Branding</span><span class="ribbon-sep">✦</span>
+            <span>Showroom Design</span><span class="ribbon-sep">✦</span>
+            <span>Hoardings</span><span class="ribbon-sep">✦</span>
+            <span>Flex Boards</span><span class="ribbon-sep">✦</span>
+            <span>Glow Signs</span><span class="ribbon-sep">✦</span>
+            <span>Wall Branding</span><span class="ribbon-sep">✦</span>
+            <span>Showroom Design</span><span class="ribbon-sep">✦</span>
+        </div>
+    </div>
+</section>
+
+<!-- SECTION DIVIDER -->
+<div class="sec-divider"></div>
+
+<!-- ═══════════════════════════════
+     ABOUT
+════════════════════════════════ -->
+<section id="about" class="section-pad">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Our Story</div>
+        <div class="about-grid">
+            <!-- Image column -->
+            <div class="about-visuals reveal" data-reveal="left">
+                <div class="about-img-main glass-card">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=900&q=80" alt="AD Enterprises team">
+                    <div class="img-glow"></div>
+                </div>
+                <div class="about-img-accent glass-card">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=500&q=80" alt="Printing work">
+                </div>
+                <div class="exp-badge">
+                    <span class="exp-num">10<span>+</span></span>
+                    <span class="exp-label">Years of<br>Excellence</span>
+                </div>
+            </div>
+
+            <!-- Text column -->
+            <div class="about-text reveal" data-reveal="right">
+                <h2>Trusted by Brands<br><span class="gradient-text">Across Bihar &amp; Jharkhand</span></h2>
+                <p class="lead-text">Founded in 2014 in Patna, Bihar by <strong style="color:#fff">Abhineet Raj</strong>, AD Enterprises has grown into a leading advertising company known for quality, creativity, and reliability.</p>
+                <p>From a local agency, we expanded our operations across Bihar and Jharkhand — including a branch in Ranchi — delivering premium indoor and outdoor advertising solutions for 500+ projects.</p>
+
+                <!-- Stats row -->
+                <div class="about-stats">
+                    <div class="astat glass-card">
+                        <span class="counter" data-target="500">0</span><span>+</span>
+                        <small>Projects</small>
+                    </div>
+                    <div class="astat glass-card">
+                        <span class="counter" data-target="120">0</span><span>+</span>
+                        <small>Clients</small>
+                    </div>
+                    <div class="astat glass-card">
+                        <span class="counter" data-target="2">0</span><span></span>
+                        <small>Offices</small>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline">
+                    <div class="tl-item">
+                        <div class="tl-year">2014</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">
+                            <strong>Founded in Patna, Bihar</strong>
+                            <p>Abhineet Raj established AD Enterprises as a local advertising agency.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">2017</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">
+                            <strong>Expanded &amp; Grew</strong>
+                            <p>Partnered with major brands; significantly scaled operations across Bihar.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">Ranchi</div>
+                        <div class="tl-dot"></div>
+                        <div class="tl-text">
+                            <strong>Branch Office — Ranchi</strong>
+                            <p>Opened a new office in Jharkhand to serve the growing regional demand.</p>
+                        </div>
+                    </div>
+                    <div class="tl-item">
+                        <div class="tl-year">Now</div>
+                        <div class="tl-dot tl-dot-active"></div>
+                        <div class="tl-text">
+                            <strong>500+ Projects &amp; Growing</strong>
+                            <p>Delivering premium indoor &amp; outdoor advertising solutions every day.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     SERVICES
+════════════════════════════════ -->
+<section id="services" class="section-pad bg-dark2">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">What We Do</div>
+        <div class="sec-head text-center reveal" data-reveal="up">
+            <h2>Our <span class="gradient-text">Services</span></h2>
+            <p>Indoor &amp; outdoor advertising solutions — designed, produced, and installed by us.</p>
+        </div>
+
+        <div class="services-duet">
+            <!-- Outdoor -->
+            <div class="svc-category reveal" data-reveal="up">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon"><i class="fas fa-city"></i></div>
+                    <h3>Outdoor Advertising</h3>
+                </div>
+                <div class="svc-grid">
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">01</div>
+                        <div class="svc-ico"><i class="fas fa-sign"></i></div>
+                        <h4>Hoardings<br>&amp; Flex Boards</h4>
+                        <p>Large-format hoardings, standees, and flex boards for roads, highways, and high-footfall locations.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow"></div>
+                    </div>
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">02</div>
+                        <div class="svc-ico"><i class="fas fa-paint-roller"></i></div>
+                        <h4>Wall<br>Branding</h4>
+                        <p>Durable wall painting and branding for rural, semi-urban, and commercial locations with lasting impact.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow"></div>
+                    </div>
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">03</div>
+                        <div class="svc-ico"><i class="fas fa-layer-group"></i></div>
+                        <h4>Banners &amp;<br>Standees</h4>
+                        <p>High-resolution solvent &amp; eco-solvent prints for events, launches, and promotional campaigns.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Indoor -->
+            <div class="svc-category reveal" data-reveal="up" data-delay="100">
+                <div class="svc-cat-header">
+                    <div class="svc-cat-icon svc-cat-icon-blue"><i class="fas fa-store"></i></div>
+                    <h3>Indoor Advertising</h3>
+                </div>
+                <div class="svc-grid">
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">04</div>
+                        <div class="svc-ico svc-ico-blue"><i class="fas fa-lightbulb"></i></div>
+                        <h4>Glow Sign<br>Boards</h4>
+                        <p>LED-backlit acrylic &amp; ACP glow sign boards that keep your brand visible and vibrant 24/7.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow card-glow-blue"></div>
+                    </div>
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">05</div>
+                        <div class="svc-ico svc-ico-blue"><i class="fas fa-tags"></i></div>
+                        <h4>In-Shop<br>Branding</h4>
+                        <p>Vinyl pasting, panel displays, product displays, and POS branding that transform retail spaces.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow card-glow-blue"></div>
+                    </div>
+                    <div class="svc-card glass-card" data-tilt>
+                        <div class="svc-num">06</div>
+                        <div class="svc-ico svc-ico-blue"><i class="fas fa-couch"></i></div>
+                        <h4>Showroom<br>Setup &amp; Design</h4>
+                        <p>Complete indoor setup for shops, showrooms, flats, and offices — from concept to installation.</p>
+                        <div class="svc-arrow"><i class="fas fa-arrow-right"></i></div>
+                        <div class="card-glow card-glow-blue"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FEATURED PROJECT BANNER
+════════════════════════════════ -->
+<section class="featured-banner">
+    <div class="fb-bg" style="background-image:url('https://images.unsplash.com/photo-1555529733-0e67056058e3?auto=format&fit=crop&w=1920&q=80')"></div>
+    <div class="fb-overlay"></div>
+    <div class="container fb-content reveal" data-reveal="up">
+        <div class="fb-tag">Our Work</div>
+        <h2>Premium Outdoor<br><span class="gradient-text">Advertising Projects</span></h2>
+        <p>Hoardings · Flex Boards · Wall Branding · Glow Signs — delivered across Bihar &amp; Jharkhand</p>
+        <a href="#portfolio" class="btn btn-primary">View Portfolio <i class="fas fa-arrow-right"></i></a>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     PORTFOLIO
+════════════════════════════════ -->
+<section id="portfolio" class="section-pad">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Our Work</div>
+        <div class="sec-head text-center reveal" data-reveal="up">
+            <h2>Featured <span class="gradient-text">Projects</span></h2>
+            <p>A curated look at our indoor &amp; outdoor advertising work across Bihar &amp; Jharkhand.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="pf-filters reveal" data-reveal="up">
+            <button class="pf-btn active" data-filter="all">All Work</button>
+            <button class="pf-btn" data-filter="flex">Flex &amp; Hoardings</button>
+            <button class="pf-btn" data-filter="glow">Glow Sign Boards</button>
+            <button class="pf-btn" data-filter="branding">Showroom &amp; Branding</button>
+            <button class="pf-btn" data-filter="wall">Wall Painting</button>
+        </div>
+
+        <!-- Grid -->
+        <div class="pf-grid" id="pfGrid">
+
+            <div class="pf-item pf-large flex reveal" data-reveal="up">
+                <img src="https://images.unsplash.com/photo-1542361345-89ce54c8cd05?auto=format&fit=crop&w=1200&q=80" alt="Hoarding Project" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Flex &amp; Hoardings</span>
+                    <h3>Flex Board · Patna Road</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1542361345-89ce54c8cd05?auto=format&fit=crop&w=1200&q=80" data-title="Flex Board · Patna Road"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item glow reveal" data-reveal="up" data-delay="50">
+                <img src="https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&w=700&q=80" alt="Glow Sign Board" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Glow Sign Boards</span>
+                    <h3>LED Acrylic Glow Board</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&w=700&q=80" data-title="LED Acrylic Glow Board"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item branding reveal" data-reveal="up" data-delay="100">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" alt="Showroom Branding" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Showroom &amp; Branding</span>
+                    <h3>Showroom Interior Setup</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=700&q=80" data-title="Showroom Interior Setup"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item wall reveal" data-reveal="up" data-delay="50">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Wall Painting" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Wall Painting</span>
+                    <h3>Brand Wall Painting</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" data-title="Brand Wall Painting"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item flex reveal" data-reveal="up" data-delay="100">
+                <img src="https://images.unsplash.com/photo-1520697042588-4dbde78ea0bd?auto=format&fit=crop&w=700&q=80" alt="Hoarding" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Flex &amp; Hoardings</span>
+                    <h3>Outdoor Hoarding · Ranchi</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1520697042588-4dbde78ea0bd?auto=format&fit=crop&w=700&q=80" data-title="Outdoor Hoarding · Ranchi"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item branding pf-tall reveal" data-reveal="up" data-delay="150">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80" alt="In-shop Branding" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Showroom &amp; Branding</span>
+                    <h3>In-Shop Vinyl &amp; Panel Display</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80" data-title="In-Shop Vinyl & Panel Display"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item glow reveal" data-reveal="up" data-delay="100">
+                <img src="https://images.unsplash.com/photo-1563820227914-f5139031c2d3?auto=format&fit=crop&w=700&q=80" alt="Glow Sign" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Glow Sign Boards</span>
+                    <h3>Shop Front Glow Sign</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1563820227914-f5139031c2d3?auto=format&fit=crop&w=700&q=80" data-title="Shop Front Glow Sign"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+
+            <div class="pf-item wall reveal" data-reveal="up" data-delay="150">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80" alt="Wall Branding" loading="lazy">
+                <div class="pf-overlay">
+                    <span class="pf-cat">Wall Painting</span>
+                    <h3>Outdoor Wall Campaign</h3>
+                    <button class="pf-zoom" data-src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=700&q=80" data-title="Outdoor Wall Campaign"><i class="fas fa-expand-arrows-alt"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CATEGORY SHOWCASE STRIPS
+════════════════════════════════ -->
+<section id="showcase" class="section-pad bg-dark2">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Category Deep-Dive</div>
+        <div class="sec-head text-center reveal" data-reveal="up">
+            <h2>Our Work by <span class="gradient-text">Category</span></h2>
+            <p>Explore the range of advertising solutions we deliver for businesses.</p>
+        </div>
+    </div>
+
+    <!-- Flex Boards strip -->
+    <div class="cat-strip reveal" data-reveal="up">
+        <div class="cat-strip-img" style="background-image:url('https://images.unsplash.com/photo-1542361345-89ce54c8cd05?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="cat-strip-overlay"></div>
+        <div class="cat-strip-content container">
+            <span class="cat-strip-tag">Outdoor</span>
+            <h2>Flex Boards &amp;<br>Hoardings</h2>
+            <p>High-resolution outdoor prints on durable vinyl — hoardings, standees, and flex boards that command attention on roads and highways.</p>
+            <a href="#portfolio" class="btn btn-primary">See Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Glow Signs strip -->
+    <div class="cat-strip cat-strip-rev reveal" data-reveal="up">
+        <div class="cat-strip-img" style="background-image:url('https://images.unsplash.com/photo-1614332287897-cdc485fa562d?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="cat-strip-overlay"></div>
+        <div class="cat-strip-content container">
+            <span class="cat-strip-tag">Indoor</span>
+            <h2>Glow Sign<br>Boards</h2>
+            <p>Acrylic &amp; ACP backlit signage, LED channel letters, and glow boards — keeping your brand visible and premium around the clock.</p>
+            <a href="#portfolio" class="btn btn-primary">See Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Wall Branding strip -->
+    <div class="cat-strip reveal" data-reveal="up">
+        <div class="cat-strip-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="cat-strip-overlay"></div>
+        <div class="cat-strip-content container">
+            <span class="cat-strip-tag">Outdoor</span>
+            <h2>Wall Painting &amp;<br>Branding</h2>
+            <p>Long-lasting wall painting and branding campaigns for rural areas, townships, and commercial zones — reach where billboards can't.</p>
+            <a href="#portfolio" class="btn btn-primary">See Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Showroom strip -->
+    <div class="cat-strip cat-strip-rev reveal" data-reveal="up">
+        <div class="cat-strip-img" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80')"></div>
+        <div class="cat-strip-overlay"></div>
+        <div class="cat-strip-content container">
+            <span class="cat-strip-tag">Indoor</span>
+            <h2>Showroom &amp;<br>In-Shop Branding</h2>
+            <p>Complete indoor branding — vinyl pasting, product display panels, showroom setup, and interior signage that converts visitors into buyers.</p>
+            <a href="#portfolio" class="btn btn-primary">See Projects <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     INFRASTRUCTURE
+════════════════════════════════ -->
+<section class="section-pad">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Our Backbone</div>
+        <div class="sec-head reveal" data-reveal="up">
+            <h2>Our Printing <span class="gradient-text">Infrastructure</span></h2>
+            <p>Advanced solvent &amp; eco-solvent printing machines delivering precision, durability, and premium quality.</p>
+        </div>
+
+        <div class="infra-grid">
+            <!-- Row 1: 3 machines -->
+            <div class="infra-card glass-card reveal" data-reveal="up">
+                <div class="infra-img">
+                    <img src="assets/img/infra1.png" alt="Konica 512i Solvent Printer" loading="lazy">
+                    <div class="infra-badge">Machine 01</div>
+                </div>
+                <div class="infra-body">
+                    <h4>Konica 512i Solvent Printer</h4>
+                    <p>High-speed solvent printing with Konica 512i heads — vivid, durable outdoor prints.</p>
+                </div>
+            </div>
+
+            <div class="infra-card glass-card reveal" data-reveal="up" data-delay="80">
+                <div class="infra-img">
+                    <img src="assets/img/infra2.png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
+                    <div class="infra-badge">Machine 02</div>
+                </div>
+                <div class="infra-body">
+                    <h4>Eco Solvent dx5 Head Printer</h4>
+                    <p>Precision eco-solvent printing for indoor & outdoor materials with long-lasting detail.</p>
+                </div>
+            </div>
+
+            <div class="infra-card glass-card reveal" data-reveal="up" data-delay="160">
+                <div class="infra-img">
+                    <img src="assets/img/infra3.png" alt="Konica 512i Solvent Printer" loading="lazy">
+                    <div class="infra-badge">Machine 03</div>
+                </div>
+                <div class="infra-body">
+                    <h4>Konica 512i Solvent Printer</h4>
+                    <p>High-speed wide-format production unit for heavy-duty commercial outdoor campaigns.</p>
+                </div>
+            </div>
+
+            <!-- Row 2: 2 machines centered -->
+            <div class="infra-card glass-card reveal" data-reveal="up" data-delay="240">
+                <div class="infra-img">
+                    <img src="assets/img/infra4.png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
+                    <div class="infra-badge">Machine 04</div>
+                </div>
+                <div class="infra-body">
+                    <h4>Eco Solvent dx5 Head Printer</h4>
+                    <p>Delivers sharp, photo-realistic prints ideal for close-up viewings and vehicle wraps.</p>
+                </div>
+            </div>
+
+            <div class="infra-card glass-card reveal" data-reveal="up" data-delay="320">
+                <div class="infra-img">
+                    <img src="assets/img/infra5.png" alt="Konica 512i Solvent Printer" loading="lazy">
+                    <div class="infra-badge">Machine 05</div>
+                </div>
+                <div class="infra-body">
+                    <h4>Konica 512i Solvent Printer</h4>
+                    <p>Robust solvent printer configured for massive hoarding-scale projects.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CLIENTS TICKER
+════════════════════════════════ -->
+<section class="clients-section">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Our Clients</div>
+        <div class="sec-head text-center reveal" data-reveal="up">
+            <h2>Brands That <span class="gradient-text">Trust Us</span></h2>
+            <p>Proud to have delivered advertising solutions for leading brands across multiple industries.</p>
+        </div>
+
+        <div class="clients-grid">
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="0">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/supreme.co.in"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Supreme" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#e30613;font-weight:800;font-size:1.1rem;font-family:serif;font-style:italic;">Supreme</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="60">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/hindwarehomes.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Hindware" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#00aacc;font-weight:300;font-size:1.1rem;letter-spacing:-1px;">hindware</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="120">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/cera-india.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="CERA" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#004f9f;font-weight:900;font-size:1.4rem;letter-spacing:2px;">CERA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="180">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/crompton.co.in"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Crompton" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#003087;font-weight:800;font-size:1.1rem;letter-spacing:-0.5px;">Crompton</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="240">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/sonata.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Sonata" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#f5a800;font-weight:800;font-size:1.1rem;letter-spacing:1px;background:#1a3a00;padding:2px 10px;border-radius:4px;">SONATA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="100">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/fastrack.in"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Fastrack" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#ff6600;font-weight:300;font-size:1.15rem;letter-spacing:-0.5px;">fastrack</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="160">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/varmora.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Varmora" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#fff;font-weight:800;font-size:.9rem;background:#c0006e;padding:3px 10px;border-radius:4px;">VARMORA</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="220">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/platinumguildindia.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Platinum" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#5bc8d0;font-weight:300;font-size:1rem;letter-spacing:3px;">PLATINUM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="280">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/sencogoldanddiamonds.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Senco Gold" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#fff;font-weight:800;font-size:.85rem;background:#b21f24;padding:3px 8px;border-radius:4px;">SENCO GOLD</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="client-card glass-card reveal" data-reveal="up" data-delay="340">
+                <div class="client-logo-wrap">
+                    <img src="https://logo.clearbit.com/charminarcement.com"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+                         alt="Charminar" loading="lazy">
+                    <div class="client-logo-fallback" style="display:none">
+                        <span style="color:#f5c400;font-weight:800;font-size:.9rem;background:#1149a0;padding:3px 8px;border-radius:4px;">CHARMINAR</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     CONTACT
+════════════════════════════════ -->
+<section id="contact" class="section-pad bg-dark2">
+    <div class="container">
+        <div class="sec-tag reveal" data-reveal="fade">Get In Touch</div>
+        <div class="sec-head text-center reveal" data-reveal="up">
+            <h2>Start Your <span class="gradient-text">Advertising Campaign</span></h2>
+            <p>Tell us about your requirements — we'll get back with the best solution.</p>
+        </div>
+
+        <div class="contact-grid">
+            <!-- Info panel -->
+            <div class="contact-info glass-card reveal" data-reveal="left">
+                <h3>Let's Build Your Brand Presence</h3>
+                <p>From a single shop sign to a full outdoor campaign — we're ready to deliver the best for your business.</p>
+
+                <div class="ci-items">
+                    <div class="ci-item">
+                        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5>Head Office — Patna</h5>
+                            <p>Opp. Aryabhat Knowledge University,<br>New Bengali Tola, Mithapur Bus Stand,<br>Patna, Bihar</p>
+                        </div>
+                    </div>
+                    <div class="ci-item">
+                        <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div>
+                            <h5>Branch Office — Ranchi</h5>
+                            <p>Booty More, Ranchi, Jharkhand</p>
+                        </div>
+                    </div>
+                    <div class="ci-item">
+                        <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div>
+                            <h5>Call Us</h5>
+                            <p>+91 98765 43210</p>
+                        </div>
+                    </div>
+                    <div class="ci-item">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div>
+                            <h5>Email</h5>
+                            <p>info@adenterprises.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ci-social">
+                    <a href="#" class="ci-soc-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="ci-soc-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="ci-soc-btn" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="ci-soc-btn" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+
+                <div class="ci-quick-actions">
+                    <a href="tel:+919876543210" class="btn btn-primary"><i class="fas fa-phone"></i> Call Now</a>
+                    <a href="https://wa.me/919876543210" target="_blank" class="btn btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <div class="contact-form-wrap glass-card reveal" data-reveal="right">
+                <form id="contactForm" novalidate>
+                    <div class="form-row">
+                        <div class="form-field">
+                            <label for="fname">Your Name</label>
+                            <input type="text" id="fname" required placeholder="Raj Kumar">
+                        </div>
+                        <div class="form-field">
+                            <label for="fphone">Phone Number</label>
+                            <input type="tel" id="fphone" required placeholder="+91 98765 43210">
+                        </div>
+                    </div>
+                    <div class="form-field">
+                        <label for="femail">Email Address</label>
+                        <input type="email" id="femail" required placeholder="you@brand.com">
+                    </div>
+                    <div class="form-field">
+                        <label for="fservice">Service Required</label>
+                        <select id="fservice" required>
+                            <option value="" disabled selected>— Select Service —</option>
+                            <option>Hoarding / Billboard</option>
+                            <option>Flex Printing</option>
+                            <option>Glow Sign Board</option>
+                            <option>Wall Painting</option>
+                            <option>In-shop Branding</option>
+                            <option>Showroom Design</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="fmsg">Tell us about your project</label>
+                        <textarea id="fmsg" rows="5" required placeholder="Describe your location, size, timeline, or any specific requirements…"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full" id="submitBtn">
+                        <span class="btn-label">Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map -->
+        <div class="map-wrap glass-card reveal" data-reveal="up">
+            <iframe
+                src="https://maps.google.com/maps?q=Aryabhat%20Knowledge%20University,%20Mithapur%20Bus%20Stand,%20Patna,%20Bihar&t=&z=14&ie=UTF8&iwloc=&output=embed"
+                width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="AD Enterprises Location"></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════
+     FOOTER
+════════════════════════════════ -->
+<footer class="site-footer">
+    <div class="footer-top container">
+        <div class="ft-brand">
+            <div class="ft-logo"><span class="logo-ad">AD</span><span class="logo-ent"> Enterprises</span></div>
+            <p>Bihar's trusted indoor &amp; outdoor advertising partner — Patna &amp; Ranchi. Founded 2014 by Abhineet Raj.</p>
+            <div class="ft-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/919876543210" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+
+        <div class="ft-col">
+            <h5>Quick Links</h5>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="ft-col">
+            <h5>Services</h5>
+            <ul>
+                <li><a href="#services">Hoardings</a></li>
+                <li><a href="#services">Flex Printing</a></li>
+                <li><a href="#services">Glow Sign Boards</a></li>
+                <li><a href="#services">Wall Painting</a></li>
+                <li><a href="#services">Showroom Design</a></li>
+            </ul>
+        </div>
+
+        <div class="ft-col">
+            <h5>Contact</h5>
+            <p>Patna: Mithapur Bus Stand, New Bengali Tola</p>
+            <p style="margin-top:6px;">Ranchi: Booty More, Jharkhand</p>
+            <div class="ft-contact-mini" style="margin-top:14px;">
+                <p><i class="fas fa-phone-alt"></i> +91 98765 43210</p>
+                <p><i class="fas fa-envelope"></i> info@adenterprises.com</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom container">
+        <p>&copy; 2026 AD Enterprises. All rights reserved. Founded with <span class="heart">♥</span> in Patna, Bihar.</p>
+        <p>Patna &nbsp;·&nbsp; Ranchi</p>
+    </div>
+</footer>
+
+<!-- ═══════════ MODAL ═══════════ -->
+<div id="imageModal" aria-modal="true" role="dialog" aria-label="Image viewer">
+    <button class="modal-close-btn" id="modalClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="">
+    </div>
+    <div class="modal-caption" id="modalCaption"></div>
+    <button class="modal-nav modal-prev" id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+    <button class="modal-nav modal-next" id="modalNext"><i class="fas fa-chevron-right"></i></button>
+</div>
+
+<!-- ═══════════ FLOATING BTNS ═══════════ -->
+<a href="https://wa.me/919876543210" target="_blank" class="fab-wa" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="fab-wa-pulse"></span>
+</a>
+
+<button id="backTop" class="fab-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script src="script.js"></script>
+</body>
+</html>
