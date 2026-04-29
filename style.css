@@ -999,7 +999,13 @@ input, textarea, select { font-family: var(--font-body); }
 
     /* About */
     .about-grid { grid-template-columns: 1fr; gap: 36px; }
-    .about-visuals { display: none; }
+    .about-visuals { 
+        display: grid;
+        grid-template-columns: 5fr 4fr;
+        grid-template-rows: 180px 180px;
+        gap: 12px;
+        margin-top: 10px;
+    }
     .about-text h2 { font-size: clamp(1.4rem, 5vw, 1.9rem); }
 
     /* Services */
