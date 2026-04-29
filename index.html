@@ -1128,6 +1128,64 @@
     <i class="fas fa-arrow-up"></i>
 </button>
 
+<!-- ═══════════ HELP BOT ═══════════ -->
+<!-- Floating Help Bot Button -->
+<button id="helpBotBtn" class="helpbot-fab" aria-label="Open Help Bot">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+    </svg>
+    <span class="helpbot-pulse"></span>
+    <span class="helpbot-tooltip">Help Bot</span>
+</button>
+
+<!-- Help Bot Chat Window -->
+<div id="helpBotWindow" class="helpbot-window" role="dialog" aria-label="Help Bot Chat" aria-hidden="true">
+    <!-- Header -->
+    <div class="helpbot-header">
+        <div class="helpbot-header-info">
+            <div class="helpbot-avatar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="10" rx="2"/>
+                    <path d="M9 11V7a3 3 0 0 1 6 0v4"/>
+                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                </svg>
+            </div>
+            <div>
+                <div class="helpbot-name">Help Bot</div>
+                <div class="helpbot-status"><span class="helpbot-status-dot"></span> Online</div>
+            </div>
+        </div>
+        <button class="helpbot-close" id="helpBotClose" aria-label="Close Help Bot">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Messages Area -->
+    <div class="helpbot-messages" id="helpBotMessages">
+        <!-- Welcome message injected by JS -->
+    </div>
+
+    <!-- Quick Suggestions -->
+    <div class="helpbot-quick-btns" id="helpBotQuickBtns">
+        <button class="helpbot-quick" data-query="services">🎨 Services</button>
+        <button class="helpbot-quick" data-query="machines">🖨️ Machines</button>
+        <button class="helpbot-quick" data-query="pricing">💰 Pricing</button>
+        <button class="helpbot-quick" data-query="contact">📞 Contact</button>
+    </div>
+
+    <!-- Input Area -->
+    <div class="helpbot-input-area">
+        <input type="text" id="helpBotInput" class="helpbot-input" placeholder="Ask me anything…" autocomplete="off" aria-label="Chat input">
+        <button id="helpBotSend" class="helpbot-send-btn" aria-label="Send message">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+            </svg>
+        </button>
+    </div>
+</div>
+
 <script src="script.js"></script>
 </body>
 </html>

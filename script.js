@@ -408,3 +408,207 @@
 
 })();
 
+/* ══════════════════════════════════════════════════════════
+   HELP BOT — FAQ CHATBOT MODULE (Overlay only, no side-effects)
+══════════════════════════════════════════════════════════ */
+(() => {
+    'use strict';
+
+    // ── FAQ Knowledge Base ─────────────────────────────────────────
+    const FAQ = [
+        // Company
+        { keys: ['located', 'location', 'where', 'office', 'address', 'city', 'state'],
+          ans: '📍 Head office in Patna, Bihar. Branch in Ranchi, Jharkhand. Serving both states.' },
+        { keys: ['founded', 'started', 'established', 'when', 'year', 'since'],
+          ans: '🗓️ Founded in 2014 by Abhineet Raj in Patna, Bihar.' },
+        { keys: ['experience', 'years', 'old', 'how long', 'expertise'],
+          ans: '🏆 10+ years of experience with 500+ completed projects across Bihar & Jharkhand.' },
+
+        // Services
+        { keys: ['services', 'offer', 'do you do', 'what do', 'provide', 'available'],
+          ans: '🎨 We offer: Hoardings, Flex boards, Glow sign boards, ACP panels, In-shop branding, Wall painting & Installation.' },
+        { keys: ['installation', 'install', 'setup', 'fitting', 'fix'],
+          ans: '🔧 Yes! We handle full design, printing, and installation — end to end.' },
+
+        // Hoardings
+        { keys: ['hoarding', 'billboard', 'outdoor board', 'large board'],
+          ans: '🪧 Large outdoor billboards for maximum visibility on roads and highways.' },
+        { keys: ['durable', 'durability', 'long last', 'weather', 'waterproof', 'last'],
+          ans: '✅ Our prints are weather-resistant and long-lasting — built for outdoor conditions.' },
+
+        // Flex Printing
+        { keys: ['flex', 'vinyl', 'banner', 'flex print', 'printing'],
+          ans: '🖨️ Large-format vinyl printing for banners. Waterproof, durable, ideal for outdoors.' },
+
+        // Glow Signs
+        { keys: ['glow', 'glow sign', 'led', 'signboard', 'sign board', 'backlit', 'illuminate'],
+          ans: '💡 LED-lit acrylic & ACP signboards for shops — clear visibility day and night.' },
+        { keys: ['night', 'visibility', 'visible', 'bright'],
+          ans: '🌙 Glow sign boards ensure clear brand visibility both day and night.' },
+
+        // ACP
+        { keys: ['acp', 'acp panel', 'panel', 'aluminium', 'aluminum'],
+          ans: '🏗️ ACP (Aluminium Composite Panel) boards for premium, modern exterior signage.' },
+
+        // In-shop Branding
+        { keys: ['inshop', 'in-shop', 'shop', 'interior', 'retail', 'showroom', 'branding'],
+          ans: '🏪 In-shop branding: vinyl pasting, product displays, POS & showroom interior setups.' },
+
+        // Wall Painting
+        { keys: ['wall', 'wall paint', 'wall branding', 'paint'],
+          ans: '🎨 Durable wall painting & branding for rural, semi-urban and commercial zones.' },
+
+        // Machines
+        { keys: ['machine', 'machines', 'equipment', 'printer', 'technology'],
+          ans: '🖨️ We use: Konica 512i Solvent Printer & Eco Solvent DX5 Head Printer.' },
+        { keys: ['konica', 'konica 512', '512i', 'solvent printer'],
+          ans: '⚡ Konica 512i: high-speed solvent printer for vivid, durable outdoor prints.' },
+        { keys: ['eco solvent', 'dx5', 'eco', 'indoor printer'],
+          ans: '🎯 Eco Solvent DX5: high-quality indoor printing with precise, lasting detail.' },
+
+        // Pricing & Quote
+        { keys: ['price', 'pricing', 'cost', 'rate', 'charge', 'fee', 'quote', 'quotation', 'estimate'],
+          ans: '💰 Free quotations available! Contact us on WhatsApp or via the contact form for a custom quote.' },
+
+        // Contact
+        { keys: ['contact', 'reach', 'call', 'whatsapp', 'phone', 'number', 'email', 'get in touch'],
+          ans: '📞 Contact us via WhatsApp: +91 73017 42314 or use the Contact section on our website.' },
+        { keys: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'namaste'],
+          ans: '👋 Hello! Ask me about our services, hoardings, machines, or contact details.' },
+        { keys: ['thank', 'thanks', 'great', 'awesome', 'perfect', 'wonderful'],
+          ans: "😊 You're welcome! Let us know if you have more questions." },
+    ];
+
+    const FALLBACK = '🤝 Please contact us on WhatsApp (+91 73017 42314) for detailed help.';
+    const WELCOME  = "Hi! I'm AD Enterprises Help Bot 👋\nAsk me about services, hoardings, machines, or contact details.";
+
+    // ── DOM Refs ───────────────────────────────────────────────────
+    const btn       = document.getElementById('helpBotBtn');
+    const win       = document.getElementById('helpBotWindow');
+    const closeBtn  = document.getElementById('helpBotClose');
+    const messages  = document.getElementById('helpBotMessages');
+    const input     = document.getElementById('helpBotInput');
+    const sendBtn   = document.getElementById('helpBotSend');
+    const quickBtns = document.querySelectorAll('.helpbot-quick');
+
+    if (!btn || !win) return;   // guard: elements must exist
+
+    // ── State ──────────────────────────────────────────────────────
+    let isOpen = false;
+    let welcomeShown = false;
+
+    // ── Helpers ────────────────────────────────────────────────────
+    const getTime = () => {
+        const d = new Date();
+        return d.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+    };
+
+    const scrollToBottom = () => {
+        messages.scrollTo({ top: messages.scrollHeight, behavior: 'smooth' });
+    };
+
+    const addMessage = (text, type) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'helpbot-msg ' + type;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'helpbot-bubble';
+        bubble.innerHTML = text.replace(/\n/g, '<br>');
+
+        const time = document.createElement('div');
+        time.className = 'helpbot-msg-time';
+        time.textContent = getTime();
+
+        wrap.appendChild(bubble);
+        wrap.appendChild(time);
+        messages.appendChild(wrap);
+        scrollToBottom();
+    };
+
+    const showTyping = () => {
+        const wrap = document.createElement('div');
+        wrap.className = 'helpbot-msg bot helpbot-typing';
+        wrap.id = 'helpbotTypingIndicator';
+        wrap.innerHTML = '<div class="helpbot-bubble"><span class="helpbot-dot"></span><span class="helpbot-dot"></span><span class="helpbot-dot"></span></div>';
+        messages.appendChild(wrap);
+        scrollToBottom();
+    };
+
+    const hideTyping = () => {
+        const t = document.getElementById('helpbotTypingIndicator');
+        if (t) t.remove();
+    };
+
+    // ── Keyword Matching ───────────────────────────────────────────
+    const getAnswer = (query) => {
+        const q = query.toLowerCase().trim();
+        for (const entry of FAQ) {
+            if (entry.keys.some(k => q.includes(k))) return entry.ans;
+        }
+        return FALLBACK;
+    };
+
+    // ── Bot Reply with typing indicator ────────────────────────────
+    const botReply = (text) => {
+        showTyping();
+        const delay = 700 + Math.random() * 400;
+        setTimeout(() => {
+            hideTyping();
+            addMessage(text, 'bot');
+        }, delay);
+    };
+
+    // ── Open / Close ───────────────────────────────────────────────
+    const openChat = () => {
+        win.classList.add('helpbot-open');
+        win.setAttribute('aria-hidden', 'false');
+        btn.setAttribute('aria-label', 'Close Help Bot');
+        isOpen = true;
+
+        if (!welcomeShown) {
+            welcomeShown = true;
+            setTimeout(() => addMessage(WELCOME, 'bot'), 320);
+        } else {
+            scrollToBottom();
+        }
+        setTimeout(() => input.focus(), 380);
+    };
+
+    const closeChat = () => {
+        win.classList.remove('helpbot-open');
+        win.setAttribute('aria-hidden', 'true');
+        btn.setAttribute('aria-label', 'Open Help Bot');
+        isOpen = false;
+    };
+
+    // ── Send ───────────────────────────────────────────────────────
+    const handleSend = () => {
+        const text = input.value.trim();
+        if (!text) return;
+        input.value = '';
+        addMessage(text, 'user');
+        botReply(getAnswer(text));
+    };
+
+    // ── Event Listeners ────────────────────────────────────────────
+    btn.addEventListener('click', () => isOpen ? closeChat() : openChat());
+    closeBtn.addEventListener('click', closeChat);
+    sendBtn.addEventListener('click', handleSend);
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
+    });
+
+    quickBtns.forEach(qb => {
+        qb.addEventListener('click', () => {
+            const label = qb.textContent.replace(/^\W+/, '').trim();
+            addMessage(label, 'user');
+            botReply(getAnswer(qb.dataset.query));
+        });
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isOpen) closeChat();
+    });
+
+})();
