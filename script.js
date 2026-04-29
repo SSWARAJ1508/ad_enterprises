@@ -201,16 +201,27 @@
     // ─── 10. PORTFOLIO FILTER ────────────────────────────────────
     const filterBtns = $$('.pf-btn');
     const pfItems    = $$('.pf-item');
+    const pfSeeMoreWrap = $('#pfSeeMoreWrap');
+    const pfSeeMoreBtn  = $('#pfSeeMoreBtn');
+    
+    let showingAllWork = true;
+    let allWorkExpanded = false;
+    const INITIAL_ALL_LIMIT = 9;
 
-    filterBtns.forEach(btn => {
-        on(btn, 'click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const filter = btn.dataset.filter;
-            pfItems.forEach(item => {
-                const show = filter === 'all' || item.classList.contains(filter);
-                item.style.transition = 'opacity .35s ease, transform .35s ease';
-                if (show) {
+    const renderPortfolio = () => {
+        pfItems.forEach((item, index) => {
+            let show = false;
+            if (showingAllWork) {
+                show = allWorkExpanded ? true : index < INITIAL_ALL_LIMIT;
+            } else {
+                const activeBtn = $('.pf-btn.active');
+                const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+                show = item.classList.contains(filter);
+            }
+
+            item.style.transition = 'opacity .35s ease, transform .35s ease';
+            if (show) {
+                if (item.classList.contains('hidden')) {
                     item.classList.remove('hidden');
                     item.style.opacity = '0';
                     item.style.transform = 'scale(0.96)';
@@ -218,12 +229,38 @@
                         item.style.opacity = '1';
                         item.style.transform = '';
                     }, 30));
-                } else {
-                    item.classList.add('hidden');
                 }
-            });
+            } else {
+                item.classList.add('hidden');
+                item.style.opacity = '0';
+            }
+        });
+        
+        if (pfSeeMoreWrap) {
+            pfSeeMoreWrap.style.display = (showingAllWork && !allWorkExpanded && pfItems.length > INITIAL_ALL_LIMIT) ? 'block' : 'none';
+        }
+    };
+
+    filterBtns.forEach(btn => {
+        on(btn, 'click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            showingAllWork = (btn.dataset.filter === 'all');
+            if (showingAllWork) allWorkExpanded = false;
+            
+            renderPortfolio();
         });
     });
+
+    if (pfSeeMoreBtn) {
+        on(pfSeeMoreBtn, 'click', () => {
+            allWorkExpanded = true;
+            renderPortfolio();
+        });
+    }
+
+    renderPortfolio();
 
     // ─── 11. LIGHTBOX MODAL ──────────────────────────────────────
     const modal        = $('#imageModal');
@@ -306,6 +343,60 @@
             setTimeout(() => { btn.innerHTML = '<i class="fas fa-paper-plane"></i>'; }, 2500);
         }
     });
+
+    // ─── 15. HERO SLIDER ─────────────────────────────────────────
+    const initHeroSlider = () => {
+        const sliderImgs = $$('.slider-img');
+        if (!sliderImgs.length) return;
+        let currentIdx = 0;
+        setInterval(() => {
+            sliderImgs[currentIdx].classList.remove('active');
+            currentIdx = (currentIdx + 1) % sliderImgs.length;
+            sliderImgs[currentIdx].classList.add('active');
+        }, 2000);
+    };
+    initHeroSlider();
+
+    // ─── 16. INFRASTRUCTURE SCROLL ANIMATION ───────────────
+    const infraContainer = $('#infraScrollContainer');
+    const infraTrack = $('#infraScrollTrack');
+    const infraCards = $$('.infra-card.scroll-anim');
+    
+    if (infraContainer && infraTrack) {
+        window.addEventListener('scroll', () => {
+            const rect = infraContainer.getBoundingClientRect();
+            const windowHeight = window.innerHeight;
+            
+            // Check if container is in viewport
+            if (rect.top < windowHeight && rect.bottom > 0) {
+                // Calculate scroll progress (0 to 1)
+                const totalScroll = windowHeight + rect.height;
+                const currentScroll = windowHeight - rect.top;
+                let progress = currentScroll / totalScroll;
+                progress = Math.max(0, Math.min(1, progress));
+                
+                // Translate X based on progress
+                const maxTranslate = infraTrack.scrollWidth - infraContainer.clientWidth + 80;
+                if (maxTranslate > 0) {
+                    const translateX = -(progress * maxTranslate);
+                    infraTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
+                }
+            }
+        });
+        
+        // Progressive scale and fade via IntersectionObserver
+        const infraObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px -5% 0px -5%' });
+        
+        infraCards.forEach(card => infraObserver.observe(card));
+    }
 
 })();
 
