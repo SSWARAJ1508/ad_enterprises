@@ -363,26 +363,34 @@
     const infraCards = $$('.infra-card.scroll-anim');
     
     if (infraContainer && infraTrack) {
-        window.addEventListener('scroll', () => {
+        const updateInfra = () => {
             const rect = infraContainer.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-            
-            // Check if container is in viewport
+
+            // Total overscroll = how far track extends beyond container
+            const overscroll = infraTrack.scrollWidth - infraContainer.clientWidth;
+
+            // Start offset: center Machine 1 in the viewport
+            // Machine 1 (first card) should be centered at progress=0
+            const firstCard = infraTrack.firstElementChild;
+            const cardWidth = firstCard ? firstCard.offsetWidth : 650;
+            const startOffset = (infraContainer.clientWidth / 2) - (cardWidth / 2);
+
             if (rect.top < windowHeight && rect.bottom > 0) {
-                // Calculate scroll progress (0 to 1)
                 const totalScroll = windowHeight + rect.height;
                 const currentScroll = windowHeight - rect.top;
                 let progress = currentScroll / totalScroll;
                 progress = Math.max(0, Math.min(1, progress));
-                
-                // Translate X based on progress
-                const maxTranslate = infraTrack.scrollWidth - infraContainer.clientWidth + 80;
-                if (maxTranslate > 0) {
-                    const translateX = -(progress * maxTranslate);
-                    infraTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
-                }
+
+                // At progress=0: show Machine 1 centered → positive offset
+                // At progress=1: fully scrolled to the right end → negative max
+                const translateX = startOffset - (progress * (overscroll + startOffset));
+                infraTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
             }
-        });
+        };
+
+        window.addEventListener('scroll', updateInfra, { passive: true });
+        updateInfra(); // Run once on load to set initial center position
         
         // Progressive scale and fade via IntersectionObserver
         const infraObserver = new IntersectionObserver((entries) => {
