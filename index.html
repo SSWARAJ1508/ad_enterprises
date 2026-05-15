@@ -770,43 +770,62 @@
 
     </div>
     
-    <div class="infra-scroll-container" id="infraScrollContainer">
-        <div class="infra-scroll-track" id="infraScrollTrack">
-            <!-- Machine 1 -->
-            <div class="infra-card glass-card scroll-anim">
-                <div class="infra-img">
-                    <img src="assets/img/Konica 512i Solvent Printer Konica 512i Solvent Printer Konica 512i Solvent Printer .png" alt="Konica 512i Solvent Printer" loading="lazy">
-                    <div class="infra-badge">Machine 01</div>
+    <!-- Manual Carousel -->
+    <div class="infra-carousel-wrap" id="infraCarouselWrap">
+        <!-- Viewport clips overflow -->
+        <div class="infra-carousel-viewport" id="infraViewport">
+            <div class="infra-carousel-track" id="infraTrack">
+                <!-- Machine 1 -->
+                <div class="infra-card glass-card">
+                    <div class="infra-img">
+                        <img src="assets/img/Konica 512i Solvent Printer Konica 512i Solvent Printer Konica 512i Solvent Printer .png" alt="Konica 512i Solvent Printer" loading="lazy">
+                        <div class="infra-badge">Machine 01</div>
+                    </div>
+                    <div class="infra-body">
+                        <h4>Konica 512i Solvent Printer</h4>
+                        <p>High-speed solvent printing with Konica 512i heads — vivid, durable outdoor prints.</p>
+                    </div>
                 </div>
-                <div class="infra-body">
-                    <h4>Konica 512i Solvent Printer</h4>
-                    <p>High-speed solvent printing with Konica 512i heads — vivid, durable outdoor prints.</p>
-                </div>
-            </div>
 
-            <!-- Machine 2 -->
-            <div class="infra-card glass-card scroll-anim">
-                <div class="infra-img">
-                    <img src="assets/img/Eco Solvent dx5 Head Printer Eco Solvent dx5 Head Printer Eco Solvent dx5 Head Printer .png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
-                    <div class="infra-badge">Machine 02</div>
+                <!-- Machine 2 -->
+                <div class="infra-card glass-card">
+                    <div class="infra-img">
+                        <img src="assets/img/Eco Solvent dx5 Head Printer Eco Solvent dx5 Head Printer Eco Solvent dx5 Head Printer .png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
+                        <div class="infra-badge">Machine 02</div>
+                    </div>
+                    <div class="infra-body">
+                        <h4>Eco Solvent dx5 Head Printer</h4>
+                        <p>Precision eco-solvent printing for indoor &amp; outdoor materials with long-lasting detail.</p>
+                    </div>
                 </div>
-                <div class="infra-body">
-                    <h4>Eco Solvent dx5 Head Printer</h4>
-                    <p>Precision eco-solvent printing for indoor &amp; outdoor materials with long-lasting detail.</p>
-                </div>
-            </div>
 
-            <!-- Machine 3 -->
-            <div class="infra-card glass-card scroll-anim">
-                <div class="infra-img">
-                    <img src="assets/img/Eco Solvent dx5 Head Printer.png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
-                    <div class="infra-badge">Machine 03</div>
-                </div>
-                <div class="infra-body">
-                    <h4>Eco Solvent dx5 Head Printer</h4>
-                    <p>Delivers sharp, photo-realistic prints ideal for close-up viewings and vehicle wraps.</p>
+                <!-- Machine 3 -->
+                <div class="infra-card glass-card">
+                    <div class="infra-img">
+                        <img src="assets/img/Eco Solvent dx5 Head Printer.png" alt="Eco Solvent DX5 Head Printer" loading="lazy">
+                        <div class="infra-badge">Machine 03</div>
+                    </div>
+                    <div class="infra-body">
+                        <h4>Eco Solvent dx5 Head Printer</h4>
+                        <p>Delivers sharp, photo-realistic prints ideal for close-up viewings and vehicle wraps.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Controls: Prev · Dots · Next -->
+        <div class="infra-controls">
+            <button class="infra-nav-btn" id="infraPrev" aria-label="Previous machine">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <div class="infra-dots" id="infraDots">
+                <button class="infra-dot active" data-index="0" aria-label="Machine 1"></button>
+                <button class="infra-dot" data-index="1" aria-label="Machine 2"></button>
+                <button class="infra-dot" data-index="2" aria-label="Machine 3"></button>
+            </div>
+            <button class="infra-nav-btn" id="infraNext" aria-label="Next machine">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </div>
 </section>

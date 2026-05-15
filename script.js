@@ -357,53 +357,67 @@
     };
     initHeroSlider();
 
-    // ─── 16. INFRASTRUCTURE SCROLL ANIMATION ───────────────
-    const infraContainer = $('#infraScrollContainer');
-    const infraTrack = $('#infraScrollTrack');
-    const infraCards = $$('.infra-card.scroll-anim');
-    
-    if (infraContainer && infraTrack) {
-        const updateInfra = () => {
-            const rect = infraContainer.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
+    // ─── 16. INFRASTRUCTURE CAROUSEL (manual) ──────────────
+    const infraViewport = $('#infraViewport');
+    const infraTrack    = $('#infraTrack');
+    const infraPrev     = $('#infraPrev');
+    const infraNext     = $('#infraNext');
+    const infraDotEls   = $$('.infra-dot');
 
-            // Total overscroll = how far track extends beyond container
-            const overscroll = infraTrack.scrollWidth - infraContainer.clientWidth;
+    if (infraTrack && infraViewport) {
+        const cards     = $$('.infra-card', infraTrack);
+        const total     = cards.length;
+        let current     = 0;
 
-            // Start offset: center Machine 1 in the viewport
-            // Machine 1 (first card) should be centered at progress=0
-            const firstCard = infraTrack.firstElementChild;
-            const cardWidth = firstCard ? firstCard.offsetWidth : 650;
-            const startOffset = (infraContainer.clientWidth / 2) - (cardWidth / 2);
-
-            if (rect.top < windowHeight && rect.bottom > 0) {
-                const totalScroll = windowHeight + rect.height;
-                const currentScroll = windowHeight - rect.top;
-                let progress = currentScroll / totalScroll;
-                progress = Math.max(0, Math.min(1, progress));
-
-                // At progress=0: show Machine 1 centered → positive offset
-                // At progress=1: fully scrolled to the right end → negative max
-                const translateX = startOffset - (progress * (overscroll + startOffset));
-                infraTrack.style.transform = `translate3d(${translateX}px, 0, 0)`;
-            }
+        const getOffset = (index) => {
+            const vpW    = infraViewport.clientWidth;
+            const cardEl = cards[index];
+            if (!cardEl) return 0;
+            const cardW  = cardEl.offsetWidth;
+            // Position the card so it is centred inside the viewport
+            const cardLeft = cardEl.offsetLeft;
+            return cardLeft - (vpW / 2) + (cardW / 2);
         };
 
-        window.addEventListener('scroll', updateInfra, { passive: true });
-        updateInfra(); // Run once on load to set initial center position
-        
-        // Progressive scale and fade via IntersectionObserver
-        const infraObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('in-view');
-                } else {
-                    entry.target.classList.remove('in-view');
-                }
+        const goTo = (index) => {
+            current = Math.max(0, Math.min(total - 1, index));
+            infraTrack.style.transform = `translateX(-${getOffset(current)}px)`;
+
+            // Update dots
+            infraDotEls.forEach((d, i) => d.classList.toggle('active', i === current));
+
+            // Update button states
+            if (infraPrev) infraPrev.disabled = (current === 0);
+            if (infraNext) infraNext.disabled = (current === total - 1);
+        };
+
+        // Prev / Next buttons
+        on(infraPrev, 'click', () => goTo(current - 1));
+        on(infraNext, 'click', () => goTo(current + 1));
+
+        // Dot clicks
+        infraDotEls.forEach(dot => {
+            on(dot, 'click', () => goTo(parseInt(dot.dataset.index, 10)));
+        });
+
+        // Swipe / touch support
+        let touchStartX = 0;
+        infraViewport.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+        infraViewport.addEventListener('touchend', (e) => {
+            const dx = e.changedTouches[0].clientX - touchStartX;
+            if (Math.abs(dx) > 40) goTo(dx < 0 ? current + 1 : current - 1);
+        }, { passive: true });
+
+        // Initialise: centre Card 1 after paint so offsetWidth is ready
+        requestAnimationFrame(() => {
+            infraTrack.style.transition = 'none'; // no flicker on first load
+            goTo(0);
+            requestAnimationFrame(() => {
+                infraTrack.style.transition = ''; // restore transition
             });
-        }, { threshold: 0.15, rootMargin: '0px -5% 0px -5%' });
-        
-        infraCards.forEach(card => infraObserver.observe(card));
+        });
     }
 
 })();

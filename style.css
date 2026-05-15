@@ -569,7 +569,7 @@ input, textarea, select { font-family: var(--font-body); }
     gap: 16px;
 }
 .about-img-main { grid-column: 1; grid-row: 1 / span 2; overflow: hidden; position: relative; background: rgba(0,0,0,0.4); border-radius: var(--radius); }
-.about-img-main img { object-fit: cover; width: 100%; height: 100%; transition: transform .8s var(--ease); }
+.about-img-main img { object-fit: cover; object-position: 65% center; width: 100%; height: 100%; transition: transform .8s var(--ease); }
 .about-img-main:hover img { transform: scale(1.03); }
 .img-glow { position: absolute; inset: 0; background: linear-gradient(180deg, transparent 60%, rgba(0,242,138,.06)); pointer-events: none; }
 .about-img-accent { grid-column: 2; grid-row: 1; overflow: hidden; border-radius: var(--radius); background: #fff; display: flex; align-items: center; justify-content: center; padding: 20px; }
@@ -806,14 +806,52 @@ input, textarea, select { font-family: var(--font-body); }
 .cat-strip-content h2 { font-family: var(--font-head); font-size: clamp(1.3rem, 2.2vw, 2rem); font-weight:800; color:#fff; line-height:1.22; margin-bottom:10px; }
 .cat-strip-content p  { font-size:.88rem; color:var(--c-text); margin-bottom:16px; opacity:.85; line-height: 1.7; max-width: 360px; }
 
-/* ── INFRASTRUCTURE ───────────────────────────────────── */
-.infra-scroll-container { width: 100vw; margin-left: calc(-50vw + 50%); overflow-x: hidden; padding: 40px 0; margin-top: 20px; display: flex; justify-content: center; }
-.infra-scroll-track { display: flex; gap: 24px; padding: 0 5vw; width: max-content; will-change: transform; flex-shrink: 0; }
-.infra-card { width: 650px; height: 420px; display: flex; flex-direction: column; border-radius: 20px; transition: transform .4s var(--ease), box-shadow .4s, border-color .4s, opacity .6s; padding: 24px; background: var(--c-bg2); }
-.infra-card.scroll-anim { opacity: 0.3; transform: scale(0.9); }
-.infra-card.scroll-anim.in-view { opacity: 1; transform: scale(1); }
-.infra-card.scroll-anim.in-view:hover { transform: scale(1.05) !important; box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 25px rgba(0,255,180,0.2); border-color: rgba(0,242,138,.28); z-index: 10; }
-.infra-card:hover { transform: scale(1.05) !important; box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 25px rgba(0,255,180,0.2); border-color: rgba(0,242,138,.28); z-index: 10; }
+/* ── INFRASTRUCTURE CAROUSEL ──────────────────────────── */
+.infra-carousel-wrap {
+    width: 100%;
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    position: relative;
+}
+
+/* The viewport — clips overflow */
+.infra-carousel-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 12px 0 16px;
+}
+
+/* The sliding track — moves only on button click */
+.infra-carousel-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    align-items: stretch;
+}
+
+/* Individual machine card */
+.infra-card {
+    flex: 0 0 min(600px, 88vw);
+    height: 420px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    padding: 24px;
+    background: var(--c-bg2);
+    transition: transform .4s var(--ease), box-shadow .4s, border-color .4s;
+}
+.infra-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 50px rgba(0,0,0,.5), 0 0 25px rgba(0,255,180,0.2);
+    border-color: rgba(0,242,138,.28);
+    z-index: 10;
+}
+
 .infra-img { flex: 1; position: relative; border-radius: 14px; overflow: hidden; background: rgba(0,0,0,0.6); margin-bottom: 24px; }
 .infra-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; padding: 10px; transition: transform .7s var(--ease); }
 .infra-card:hover .infra-img img { transform: scale(1.07); }
@@ -821,6 +859,65 @@ input, textarea, select { font-family: var(--font-body); }
 .infra-body { flex-shrink: 0; padding: 0 8px; }
 .infra-body h4 { color: #fff; font-weight: 700; font-size: 1.25rem; margin-bottom: 10px; line-height: 1.35; text-shadow: 0 0 8px rgba(0,255,180,0.4); }
 .infra-body p  { font-size: 0.95rem; color: #e2e8f0; line-height: 1.6; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ── Carousel Controls row ── */
+.infra-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.infra-nav-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: #fff;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background .3s, border-color .3s, transform .2s, box-shadow .3s;
+    backdrop-filter: blur(8px);
+    flex-shrink: 0;
+}
+.infra-nav-btn:hover:not(:disabled) {
+    background: var(--c-green);
+    border-color: var(--c-green);
+    color: #000;
+    transform: scale(1.1);
+    box-shadow: 0 0 18px rgba(0,242,138,.4);
+}
+.infra-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ── Dot indicators ── */
+.infra-dots {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+}
+.infra-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.25);
+    transition: all .35s ease;
+    cursor: pointer;
+    padding: 0;
+}
+.infra-dot.active {
+    background: var(--c-green);
+    border-color: var(--c-green);
+    box-shadow: 0 0 10px rgba(0,242,138,.5);
+    width: 24px;
+    border-radius: 5px;
+}
 
 /* ── CLIENTS GRID ─────────────────────────────────────── */
 .clients-section { padding: var(--pad-section); overflow: hidden; border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border); }
